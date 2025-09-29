@@ -101,7 +101,7 @@ vim.keymap.set('v', '<', '<gv', { desc = 'Indent left and reselect' })
 vim.keymap.set('v', '>', '>gv', { desc = 'Indent right and reselect' })
 
 -- Quick file navigation
-vim.keymap.set('n', '<leader>e', ':Explore<CR>', { desc = 'Open file explorer' })
+-- vim.keymap.set('n', '<leader>e', ':Explore<CR>', { desc = 'Open file explorer' })
 vim.keymap.set('n', '<leader>ff', ':find ', { desc = 'Find file' })
 
 -- Better J behavior
@@ -119,3 +119,7 @@ end)
 
 -- Quick close
 vim.keymap.set('n', '<leader>xx', '<cmd>q<CR>', { desc = '[Q]uick [Close]' })
+vim.keymap.set('n', '<C-s>', '<cmd>w<CR>', { desc = 'Save file' })
+
+-- save file
+vim.keymap.set({ 'i', 'x', 'n', 's' }, '<C-s>', '<cmd>w<cr><esc>', { desc = 'Save File' })

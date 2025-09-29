@@ -58,6 +58,8 @@ return {
       },
 
       -- Document existing key chains
+      -- NOTE  Add more groups for specific keyStroke Suggestions like https://www.lazyvim.org/plugins/editor
+      --
       spec = {
         { '<leader>s', group = '[S]earch' },
         { '<leader>t', group = '[T]oggle' },

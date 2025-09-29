@@ -80,3 +80,11 @@ vim.api.nvim_create_autocmd('BufWritePre', {
     end
   end,
 })
+
+-- Auto command to check existing keymap
+vim.api.nvim_create_user_command('MapCheck', function(opts)
+  local modes = { 'n', 'v', 'x', 'o', 'i', 't' }
+  for _, m in ipairs(modes) do
+    vim.cmd('verbose ' .. m .. 'map ' .. opts.args)
+  end
+end, { nargs = 1 })

@@ -75,7 +75,7 @@ end
 
 function M.setup()
   vim.keymap.set('n', '<leader>tt', M.open, { noremap = true, silent = true, desc = 'Toggle floating terminal' })
-  vim.keymap.set('t', '<Esc>', function()
+  vim.keymap.set('t', '<C-x>', function()
     if terminal_state.is_open then
       vim.api.nvim_win_close(terminal_state.win, false)
       terminal_state.is_open = false

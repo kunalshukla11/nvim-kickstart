@@ -4,13 +4,30 @@ return {
     event = { 'BufWritePre' },
     cmd = { 'ConformInfo' },
     keys = {
+      -- Format entire buffer
       {
-        '<leader>cf',
+        '<leader>fb',
         function()
-          require('conform').format { async = true, lsp_format = 'fallback' }
+          require('conform').format {
+            async = true,
+            lsp_format = 'fallback',
+          }
         end,
         mode = '',
         desc = '[F]ormat buffer',
+      },
+      -- Visual + Visual-line: format selection
+      {
+        '<leader>fs',
+        function()
+          require('conform').format {
+            async = false,
+            timeout_ms = 1000,
+            lsp_format = 'fallback',
+          }
+        end,
+        mode = { 'v', 'x', 'n' }, -- 'v' = characterwise visual, 'x' = visual-line mode
+        desc = '[C]ode: [F]ormat selection',
       },
     },
     opts = {
@@ -24,13 +41,27 @@ return {
           return nil
         else
           return {
-            timeout_ms = 500,
+            timeout_ms = 1000,
             lsp_format = 'fallback',
+            async = false,
           }
         end
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
+        javascript = { 'prettier' },
+        typescript = { 'prettier' },
+        javascriptreact = { 'prettier' },
+        typescriptreact = { 'prettier' },
+        svelte = { 'prettier' },
+        css = { 'prettier' },
+        html = { 'prettier' },
+        json = { 'prettier' },
+        yaml = { 'prettier' },
+        markdown = { 'prettier' },
+        graphql = { 'prettier' },
+        liquid = { 'prettier' },
+        python = { 'isort', 'black' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --

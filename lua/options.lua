@@ -119,7 +119,7 @@ vim.opt.backup = false -- Don't create backup files
 vim.opt.writebackup = false -- Don't create backup before writing
 vim.opt.swapfile = false -- Don't create swap files
 vim.opt.undodir = vim.fn.expand '~/.vim/undodir' -- Undo directory
-vim.opt.ttimeoutlen = 0 -- Key code timeout
+vim.opt.ttimeoutlen = 10 -- Key code timeout
 vim.opt.autoread = true -- Auto reload files changed outside vim
 vim.opt.autowrite = false -- Don't auto save
 
@@ -158,8 +158,14 @@ if vim.fn.isdirectory(undodir) == 0 then
 end
 
 -- Netrw Settings
-vim.g.netrw_banner = 0 -- Hide banner
-vim.g.netrw_liststyle = 3 -- Tree style listing
-vim.g.netrw_browse_split = 0 -- Open file in the same window
-vim.g.netrw_altv = 1 -- Open splits to the right
-vim.g.netrw_winsize = 20 -- Width of explorer window
+-- Enable these if using Netrw
+-- vim.g.netrw_banner = 0 -- Hide banner
+-- vim.g.netrw_liststyle = 3 -- Tree style listing
+-- vim.g.netrw_browse_split = 0 -- Open file in the same window
+-- vim.g.netrw_altv = 1 -- Open splits to the right
+-- vim.g.netrw_winsize = 20 -- Width of explorer window
+
+-- Enable these for nvim-tree
+-- disable netrw at the very start of your init.lua
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
