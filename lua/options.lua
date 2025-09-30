@@ -145,6 +145,7 @@ vim.opt.wildmode = 'longest:full,full'
 vim.opt.wildignore:append { '*.o', '*.obj', '*.pyc', '*.class', '*.jar' }
 
 -- Better diff options
+vim.opt.fillchars:append { diff = '╱' }
 vim.opt.diffopt:append 'linematch:60'
 
 -- Performance improvements
