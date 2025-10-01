@@ -56,8 +56,6 @@ function M.setup()
   vim.keymap.set('n', '<leader>tr', close_tabs_right, { desc = 'Close tabs to the right' })
   vim.keymap.set('n', '<leader>tL', close_tabs_left, { desc = 'Close tabs to the left' })
   vim.keymap.set('n', '<leader>bd', smart_close_buffer, { desc = 'Smart close buffer/tab' })
-  vim.keymap.set('n', '<leader>h', '<cmd>echo "hi"<CR>', { noremap = true, silent = true })
 end
 
 return M
-
