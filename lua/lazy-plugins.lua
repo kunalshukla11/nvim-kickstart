@@ -66,6 +66,7 @@ require('lazy').setup({
   require 'kickstart.plugins.substitue',
   require 'kickstart.plugins.trouble',
   require 'kickstart.plugins.ai.copilot',
+  require 'kickstart.plugins.ai.copilot-chat',
   require 'kickstart.plugins.noice',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
