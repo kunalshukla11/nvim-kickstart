@@ -48,7 +48,7 @@ require('lazy').setup({
   require 'kickstart.plugins.substitue',
   require 'kickstart.plugins.trouble',
   require 'kickstart.plugins.ai.copilot',
-  require 'kickstart.plugins.ai.copilot-chat',
+  require 'kickstart.plugins.ai.code-companion',
   require 'kickstart.plugins.noice',
 
   require 'kickstart.plugins.lsp.lspconfig',
