@@ -103,7 +103,7 @@ vim.opt.termguicolors = true -- Enable 24-bit colors
 vim.opt.colorcolumn = '110' -- Show column at 100 characters
 vim.opt.showmatch = true -- Highlight matching brackets
 vim.opt.matchtime = 2 -- How long to show matching bracket
-vim.opt.cmdheight = 1 -- Command line height
+-- vim.opt.cmdheight = 1 -- Command line height .disabled for now as using noice
 vim.opt.completeopt = 'menuone,noinsert,noselect' -- Completion options
 vim.opt.showmode = false -- Don't show mode in command line
 vim.opt.pumheight = 10 -- Popup menu height
@@ -111,7 +111,7 @@ vim.opt.pumblend = 10 -- Popup menu transparency
 vim.opt.winblend = 0 -- Floating window transparency
 vim.opt.conceallevel = 0 -- Don't hide markup
 vim.opt.concealcursor = '' -- Don't hide cursor line markup
-vim.opt.lazyredraw = true -- Don't redraw during macros
+-- vim.opt.lazyredraw = true -- Don't redraw during macros
 vim.opt.synmaxcol = 300 -- Syntax highlighting limit
 
 -- File handling
@@ -145,7 +145,7 @@ vim.opt.wildmode = 'longest:full,full'
 vim.opt.wildignore:append { '*.o', '*.obj', '*.pyc', '*.class', '*.jar' }
 
 -- Better diff options
-vim.opt.fillchars:append { diff = '╱' }
+vim.opt.fillchars:append { diff = '/' }
 vim.opt.diffopt:append 'linematch:60'
 
 -- Performance improvements
