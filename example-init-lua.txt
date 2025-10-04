@@ -130,3 +130,8 @@ end
 
 setup_dynamic_statusline()
 
+
+Run lua code in line
+<cmd>source %<CR> -- Reload config current file
+:.lua<CR> -- Run current line as lua code in normal mode
+:lua<CR> -- for multi-line lua code in visual mode

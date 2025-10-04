@@ -4,6 +4,7 @@ return {
     dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-treesitter/nvim-treesitter',
+      'nvim-telescope/telescope.nvim',
     },
     opts = {
       adapters = {
@@ -13,6 +14,34 @@ return {
       strategies = {
         chat = {
           adapter = 'copilot',
+          slash_commands = {
+            ['file'] = {
+              callback = 'strategies.chat.slash_commands.file',
+              description = 'Select a file using Telescope',
+              opts = {
+                provider = 'telescope',
+                contains_code = true,
+                picker_opts = {
+                  -- Hide common junk dirs
+                  find_command = {
+                    'fd',
+                    '--type',
+                    'f',
+                    '--strip-cwd-prefix',
+                    '--exclude',
+                    '.git',
+                    '--exclude',
+                    'node_modules',
+                    '--exclude',
+                    'dist',
+                    '--exclude',
+                    'build',
+                  },
+                  file_ignore_patterns = { '%.git/', 'node_modules/', 'dist/', 'build/' },
+                },
+              },
+            },
+          },
         },
         inline = {
           adapter = 'copilot',

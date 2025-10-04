@@ -51,10 +51,14 @@ require('lazy').setup({
   require 'kickstart.plugins.ai.code-companion',
   require 'kickstart.plugins.noice',
 
+  --Commonly used lsp plugins
   require 'kickstart.plugins.lsp.lspconfig',
   require 'kickstart.plugins.lsp.conform',
   require 'kickstart.plugins.lsp.nvim-cmp',
   require 'kickstart.plugins.lsp.lint',
+
+  -- Language-specific configs
+  require 'kickstart.plugins.lsp.languages',
 
   require 'kickstart.plugins.debug.core',
 
