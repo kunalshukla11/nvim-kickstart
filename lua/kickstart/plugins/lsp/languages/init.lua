@@ -1,5 +1,8 @@
-return {
+local M = {}
 
-  require 'kickstart.plugins.lsp.languages.javascript',
-  require 'kickstart.plugins.lsp.languages.python',
-}
+function M.setup()
+  require('kickstart.plugins.lsp.languages.javascript').setup()
+  -- Add more languages here as needed
+end
+
+return M
