@@ -34,7 +34,7 @@ function M.setup()
   mason_lspconfig.setup_handlers {
     -- Default handler for all servers
     function(server_name)
-      if vim.tbl_contains({ 'tsserver', 'tailwindcss', 'html', 'cssls' }, server_name) then
+      if vim.tbl_contains({ 'tsserver', 'ts_ls', 'tailwindcss', 'html', 'cssls' }, server_name) then
         lspconfig[server_name].setup {
           capabilities = capabilities,
         }

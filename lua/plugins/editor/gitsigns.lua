@@ -72,7 +72,8 @@ return {
         end, { desc = 'git [D]iff against last commit' })
         -- Toggles
         map('n', '<leader>tb', gitsigns.toggle_current_line_blame, { desc = '[T]oggle git show [b]lame line' })
-        map('n', '<leader>tD', gitsigns.preview_hunk_inline, { desc = '[T]oggle git show [D]eleted' })
+        map('n', '<leader>tP', gitsigns.preview_hunk_inline, { desc = '[T]oggle git show [P]review Inline' })
+        map('n', '<leader>tsd', gitsigns.toggle_deleted, { desc = '[T]oggle git show [D]eleted' })
         -- Text Object
         map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>', { desc = 'GitSigns Select Hunk' })
       end,

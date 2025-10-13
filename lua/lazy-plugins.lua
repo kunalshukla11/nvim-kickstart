@@ -29,39 +29,50 @@ require('lazy').setup({
 
   -- NOTE: Next step on your Neovim journey: Add/Configure additional plugins for Kickstart
   --
-  require 'kickstart.plugins.gitsigns',
-  require 'kickstart.plugins.which-key',
-  require 'kickstart.plugins.telescope',
-  require 'kickstart.plugins.tokyonight',
-  -- require 'kickstart.plugins.dracula',
-  require 'kickstart.plugins.todo-comments',
-  require 'kickstart.plugins.mini',
-  require 'kickstart.plugins.treesitter',
-  require 'kickstart.plugins.indent_line',
-  require 'kickstart.plugins.autopairs',
-  require 'kickstart.plugins.nvim-tree',
-  require 'kickstart.plugins.vim-maximizer',
-  require 'kickstart.plugins.tmux-navigator',
-  require 'kickstart.plugins.auto-session',
-  require 'kickstart.plugins.comment',
-  require 'kickstart.plugins.neo-git',
-  require 'kickstart.plugins.lualine',
-  require 'kickstart.plugins.substitue',
-  require 'kickstart.plugins.trouble',
-  require 'kickstart.plugins.ai.copilot',
-  require 'kickstart.plugins.ai.code-companion',
-  require 'kickstart.plugins.noice',
+  require 'plugins.coding.autopairs',
+  require 'plugins.coding.nvim-cmp',
+  require 'plugins.coding.lspconfig',
+  require 'plugins.coding.todo-comments',
+  require 'plugins.coding.treesitter',
+  require 'plugins.coding.trouble',
+
+  require 'plugins.dap.core',
+
+  require 'plugins.editor.nvim-tree',
+  require 'plugins.editor.gitsigns',
+  require 'plugins.editor.grug-far',
+  require 'plugins.editor.hardtime',
+  require 'plugins.editor.lualine',
+  require 'plugins.editor.mini',
+  require 'plugins.editor.overseer',
+  require 'plugins.editor.ufo',
+  require 'plugins.editor.which-key',
+  require 'plugins.editor.comment',
+  require 'plugins.editor.indent_line',
+  require 'plugins.editor.neo-git',
+  require 'plugins.editor.telescope',
+
+  require 'plugins.formatting.conform',
+
+  require 'plugins.linting.lint',
+
+  require 'plugins.test.core',
+
+  require 'plugins.ui.tokyonight',
+  -- require 'plugins.ui.dracula',
+  require 'plugins.ui.noice',
+
+  require 'plugins.util.mini-hipatterns',
+  require 'plugins.util.tmux-navigator',
+  require 'plugins.util.auto-session',
+  require 'plugins.util.vim-maximizer',
+  require 'plugins.util.substitue',
+
+  require 'plugins.ai.copilot',
+  require 'plugins.ai.code-companion',
 
   --Commonly used lsp plugins
-  require 'kickstart.plugins.lsp.lspconfig',
-  require 'kickstart.plugins.lsp.conform',
-  require 'kickstart.plugins.lsp.nvim-cmp',
-  require 'kickstart.plugins.lsp.lint',
 
-  -- Language-specific configs
-  -- require 'kickstart.plugins.lsp.languages',
-
-  require 'kickstart.plugins.debug.core',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
