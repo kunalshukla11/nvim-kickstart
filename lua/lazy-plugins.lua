@@ -41,7 +41,7 @@ require('lazy').setup({
   require 'plugins.editor.nvim-tree',
   require 'plugins.editor.gitsigns',
   require 'plugins.editor.grug-far',
-  require 'plugins.editor.hardtime',
+  -- require 'plugins.editor.hardtime',
   require 'plugins.editor.lualine',
   require 'plugins.editor.mini',
   require 'plugins.editor.overseer',
@@ -54,7 +54,7 @@ require('lazy').setup({
 
   require 'plugins.formatting.conform',
 
-  require 'plugins.linting.lint',
+  require 'plugins.linting.core',
 
   require 'plugins.test.core',
 
@@ -72,7 +72,6 @@ require('lazy').setup({
   require 'plugins.ai.code-companion',
 
   --Commonly used lsp plugins
-
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.

@@ -3,7 +3,7 @@ return {
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   config = function()
     local lualine = require 'lualine'
-    local lazy_status = require 'lazy.status' -- to configure lazy pending updates count
+    local lazy_status = require 'lazy.status'
 
     local colors = {
       blue = '#65D1FF',
@@ -14,6 +14,7 @@ return {
       fg = '#c3ccdc',
       bg = '#112638',
       inactive_bg = '#2c3043',
+      semilightgray = '#9ca3af',
     }
 
     local my_lualine_theme = {
@@ -49,12 +50,35 @@ return {
       },
     }
 
-    -- configure lualine with modified theme
     lualine.setup {
       options = {
         theme = my_lualine_theme,
+        component_separators = { left = '', right = '' },
+        section_separators = { left = '', right = '' },
+        globalstatus = true,
       },
       sections = {
+        lualine_a = { 'mode' },
+
+        -- 🧠 Only branch info here
+        lualine_b = {
+          { 'branch', icon = '' },
+        },
+
+        -- 🗂️ Smart shortened unique file path
+        lualine_c = {
+          {
+            'filename',
+            path = 3, -- unique part of path
+            shorting_target = 40, -- shorten if long
+            symbols = {
+              modified = ' ',
+              readonly = ' ',
+              unnamed = '[No Name]',
+            },
+          },
+        },
+
         lualine_x = {
           {
             lazy_status.updates,
@@ -65,6 +89,18 @@ return {
           { 'fileformat' },
           { 'filetype' },
         },
+        lualine_y = { 'progress' },
+        lualine_z = { 'location' },
+      },
+      inactive_sections = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = {
+          { 'filename', path = 1 },
+        },
+        lualine_x = { 'location' },
+        lualine_y = {},
+        lualine_z = {},
       },
     }
   end,

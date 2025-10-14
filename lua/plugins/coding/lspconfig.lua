@@ -226,6 +226,25 @@ return {
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         -- ts_ls = {},
         --
+        eslint = {
+          settings = {
+            workingDirectory = { mode = 'auto' }, -- auto-detects project root
+          },
+          on_attach = function(client, bufnr)
+            -- Optional: disable formatting if you use something else (e.g. conform)
+            client.server_capabilities.documentFormattingProvider = false
+
+            -- Optional: command to apply all ESLint fixes
+            vim.api.nvim_buf_create_user_command(bufnr, 'EslintFixAll', function()
+              vim.lsp.buf.execute_command {
+                command = 'eslint.applyAllFixes',
+                arguments = { { uri = vim.uri_from_bufnr(0) } },
+              }
+            end, { desc = 'ESLint: Fix all autofixable problems' })
+
+            vim.notify('ESLint LSP attached', vim.log.levels.INFO)
+          end,
+        },
 
         lua_ls = {
           -- cmd = { ... },
@@ -236,13 +255,12 @@ return {
               diagnostics = {
                 -- Get the language server to recognize the `vim` global
                 globals = { 'vim' },
+                -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
                 disable = { 'missing-fields' },
               },
               completion = {
                 callSnippet = 'Replace',
               },
-              -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-              diagnostics = { disable = { 'missing-fields' } },
             },
           },
         },
@@ -264,13 +282,43 @@ return {
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
-        -- 'prettier', -- JS/TS formatter, now in languages/javascript.lua
-        -- 'eslint_d', -- JS linter, now in languages/javascript.lua
+        'css-lsp',
+        'debugpy',
+        'docker-compose-language-service',
+        'dockerfile-language-server',
+        'eslint',
+        'intelephense',
+        'js-debug-adapter',
+        'lua-language-server',
+        'neocmakelsp',
+        'prettier',
+        'prettierd',
+        'stylua',
+        'tailwindcss-language-server',
+        'vtsls',
+        -- 'delve',
+        -- 'astro-language-server',
+        -- 'hadolint',
+        -- 'php-debug-adapter',
+        -- 'phpstan',
+        -- 'pint',
+        -- 'pyright',
+        -- 'ruff',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       require('mason-lspconfig').setup {
-        ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
+        ensure_installed = {
+          -- 'astro',
+          'cssls',
+          'eslint',
+          'lua_ls',
+          'neocmake',
+          'intelephense',
+          'pyright',
+          'tailwindcss',
+          'vtsls',
+        },
         automatic_installation = false,
         handlers = {
           function(server_name)

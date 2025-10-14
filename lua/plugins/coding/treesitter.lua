@@ -11,6 +11,10 @@ return {
     opts = {
       ensure_installed = {
         'json',
+        'caddy',
+        'diff',
+        'editorconfig',
+        'git_config',
         'javascript',
         'typescript',
         'tsx',
@@ -24,7 +28,10 @@ return {
         'graphql',
         'bash',
         'lua',
+        'luadoc',
+        'python',
         'vim',
+        'vimdoc',
         'dockerfile',
         'gitignore',
         'query',
@@ -52,6 +59,13 @@ return {
           node_decremental = '<bs>',
         },
       },
+      config = function()
+        vim.filetype.add {
+          pattern = {
+            ['config'] = 'dosini', -- better syntax highlighting for config files
+          },
+        }
+      end,
     },
     -- There are additional nvim-treesitter modules that you can use to interact
     -- with nvim-treesitter. You should go explore a few and see what interests you:
