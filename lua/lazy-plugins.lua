@@ -71,6 +71,11 @@ require('lazy').setup({
   require 'plugins.ai.copilot',
   require 'plugins.ai.code-companion',
 
+  require 'plugins.languages.docker',
+  require 'plugins.languages.markdown',
+  require 'plugins.languages.python',
+  require 'plugins.languages.typescript',
+
   --Commonly used lsp plugins
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
