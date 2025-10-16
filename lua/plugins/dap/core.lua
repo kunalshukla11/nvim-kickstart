@@ -1,6 +1,8 @@
 ---@param config {type?:string, args?:string[]|fun():string[]?}
 local function get_args(config)
-  local args = type(config.args) == 'function' and (config.args() or {}) or config.args or {} --[[@as string[] | string ]]
+  local args = type(config.args) == 'function' and (config.args() or {})
+    or config.args
+    or {} --[[@as string[] | string ]]
   local args_str = type(args) == 'table' and table.concat(args, ' ') or args --[[@as string]]
 
   config = vim.deepcopy(config)
@@ -58,12 +60,17 @@ return {
 
     config = function()
       -- load mason-nvim-dap here, after all adapters have been setup
-      local mason_nvim_dap = require('lazy.core.config').spec.plugins['mason-nvim-dap.nvim']
+      local mason_nvim_dap =
+        require('lazy.core.config').spec.plugins['mason-nvim-dap.nvim']
       local Plugin = require 'lazy.core.plugin'
       local mason_nvim_dap_opts = Plugin.values(mason_nvim_dap, 'opts', false)
       require('mason-nvim-dap').setup(mason_nvim_dap_opts)
 
-      vim.api.nvim_set_hl(0, 'DapStoppedLine', { default = true, link = 'Visual' })
+      vim.api.nvim_set_hl(
+        0,
+        'DapStoppedLine',
+        { default = true, link = 'Visual' }
+      )
 
       local dap_icons = {
         Stopped = { '󰁕 ', 'DiagnosticWarn', 'DapStoppedLine' },
@@ -110,29 +117,7 @@ return {
     config = function(_, opts)
       local dap = require 'dap'
       local dapui = require 'dapui'
-      -- Dap UI setup
-      -- For more information, see |:help nvim-dap-ui|
-      -- Merge default icons if not set by user
-      opts.icons = opts.icons or { expanded = '▾', collapsed = '▸', current_frame = '*' }
-
-      -- Merge controls.icons if controls is enabled and icons not set
-      if opts.controls and opts.controls.enabled ~= false then
-        opts.controls.icons = opts.controls.icons
-          or {
-            pause = '⏸',
-            play = '▶',
-            step_into = '⏎',
-            step_over = '⏭',
-            step_out = '⏮',
-            step_back = 'b',
-            run_last = '▶▶',
-            terminate = '⏹',
-            disconnect = '⏏',
-          }
-      end
-
       dapui.setup(opts)
-
       dap.listeners.after.event_initialized['dapui_config'] = function()
         dapui.open {}
       end

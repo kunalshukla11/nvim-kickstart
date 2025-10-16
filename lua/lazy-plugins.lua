@@ -75,6 +75,7 @@ require('lazy').setup({
   require 'plugins.languages.markdown',
   require 'plugins.languages.python',
   require 'plugins.languages.typescript',
+  require 'plugins.languages.typescriptDebug',
 
   --Commonly used lsp plugins
 
