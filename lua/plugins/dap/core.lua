@@ -1,8 +1,6 @@
 ---@param config {type?:string, args?:string[]|fun():string[]?}
 local function get_args(config)
-  local args = type(config.args) == 'function' and (config.args() or {})
-    or config.args
-    or {} --[[@as string[] | string ]]
+  local args = type(config.args) == 'function' and (config.args() or {}) or config.args or {} --[[@as string[] | string ]]
   local args_str = type(args) == 'table' and table.concat(args, ' ') or args --[[@as string]]
 
   config = vim.deepcopy(config)
@@ -60,17 +58,12 @@ return {
 
     config = function()
       -- load mason-nvim-dap here, after all adapters have been setup
-      local mason_nvim_dap =
-        require('lazy.core.config').spec.plugins['mason-nvim-dap.nvim']
+      local mason_nvim_dap = require('lazy.core.config').spec.plugins['mason-nvim-dap.nvim']
       local Plugin = require 'lazy.core.plugin'
       local mason_nvim_dap_opts = Plugin.values(mason_nvim_dap, 'opts', false)
       require('mason-nvim-dap').setup(mason_nvim_dap_opts)
 
-      vim.api.nvim_set_hl(
-        0,
-        'DapStoppedLine',
-        { default = true, link = 'Visual' }
-      )
+      vim.api.nvim_set_hl(0, 'DapStoppedLine', { default = true, link = 'Visual' })
 
       local dap_icons = {
         Stopped = { '󰁕 ', 'DiagnosticWarn', 'DapStoppedLine' },
@@ -103,7 +96,7 @@ return {
   -- fancy UI for the debugger
   {
     'rcarriga/nvim-dap-ui',
-    dependencies = { 'nvim-neotest/nvim-nio' },
+    dependencies = { 'nvim-neotest/nvim-nio', 'mfussenegger/nvim-dap' },
     -- stylua: ignore
     keys = {
       { "<leader>du", function() require("dapui").toggle({ }) end, desc = "Dap UI" },
@@ -154,3 +147,4 @@ return {
     config = function() end,
   },
 }
+
