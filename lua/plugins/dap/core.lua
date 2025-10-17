@@ -96,7 +96,7 @@ return {
   -- fancy UI for the debugger
   {
     'rcarriga/nvim-dap-ui',
-    dependencies = { 'nvim-neotest/nvim-nio' },
+    dependencies = { 'nvim-neotest/nvim-nio', 'mfussenegger/nvim-dap' },
     -- stylua: ignore
     keys = {
       { "<leader>du", function() require("dapui").toggle({ }) end, desc = "Dap UI" },
@@ -110,29 +110,7 @@ return {
     config = function(_, opts)
       local dap = require 'dap'
       local dapui = require 'dapui'
-      -- Dap UI setup
-      -- For more information, see |:help nvim-dap-ui|
-      -- Merge default icons if not set by user
-      opts.icons = opts.icons or { expanded = '▾', collapsed = '▸', current_frame = '*' }
-
-      -- Merge controls.icons if controls is enabled and icons not set
-      if opts.controls and opts.controls.enabled ~= false then
-        opts.controls.icons = opts.controls.icons
-          or {
-            pause = '⏸',
-            play = '▶',
-            step_into = '⏎',
-            step_over = '⏭',
-            step_out = '⏮',
-            step_back = 'b',
-            run_last = '▶▶',
-            terminate = '⏹',
-            disconnect = '⏏',
-          }
-      end
-
       dapui.setup(opts)
-
       dap.listeners.after.event_initialized['dapui_config'] = function()
         dapui.open {}
       end
@@ -169,3 +147,4 @@ return {
     config = function() end,
   },
 }
+
